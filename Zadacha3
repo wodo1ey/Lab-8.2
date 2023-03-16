@@ -1,0 +1,22 @@
+# Пользователь вводит строку. Необходимо написать программу, которая определяет, существует ли у этой строки такая перестановка, при которой она станет палиндромом. 
+# Вывести соответствующее сообщение.
+
+s = input("Введите строку:")
+letters = {}
+for i in range(len(s)):
+    letter = s[i]
+    quantity = 1
+    if letter in letters:
+        x = letters[letter] + 1
+        letters.pop(letter)
+        letters.update({letter: x})
+    else:
+        letters[letter] = quantity
+m = 0
+for value in letters.values():
+    if value % 2 != 0:
+        m += 1;
+if m == 0 or m % 2 != 0:
+    print("Можно сделать палиндромом")
+else:
+    print("Нельзя сделать палиндромом")
